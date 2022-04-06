@@ -1,6 +1,6 @@
 import express from "express";
 import bodyParser from "body-parser";
-import { MongoClient } from "mongodb";
+import { MongoClient, ServerApiVersion } from "mongodb";
 import path from "path";
 
 const app = express();
@@ -10,7 +10,8 @@ app.use(bodyParser.json());
 
 const withDB = async (operations, res) => {
     try {
-        const client = await MongoClient.connect('mongodb://localhost:27017', { useNewUrlParser: true});
+        const client = await MongoClient.connect('mongodb+srv://jesterdb_2:J%40ckson5650484@node-aws-test.szbe5.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true,
+            serverApi: ServerApiVersion.v1});
         const db = client.db('my-blog');
 
         await operations(db);
