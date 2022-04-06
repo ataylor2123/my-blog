@@ -62,7 +62,8 @@ app.post('/api/articles/:name/add-comment', (req, res) => {
 });
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname + '/build/index.html'));
+    res.send(200).json({message: "This is a test"});
+    //res.sendFile(path.join(__dirname + '/build/index.html'));
 });
 
-app.listen(8000, () => console.log('Listening on port 8000'));
+app.listen(8080, () => console.log('Listening on port 8080'));
